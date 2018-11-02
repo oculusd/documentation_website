@@ -8,6 +8,8 @@ The documentation template was obtained from [tympanus.net](https://tympanus.net
 
 The site template is [published on GitHub here...](https://github.com/amiechen/codrops-scribbler)
 
-Please note the [license restrictions](https://tympanus.net/codrops/licensing/)
+Please note the [license restrictions](https://tympanus.net/codrops/licensing/).
+A copy of the license in TEXT format is available in the `vendor_license.txt` 
+file.
 
 OculusD.com, Inc does not intent to redistribute the `scribbler` template, but rather use this repository to maintain our own documentation. For any enquiries please [contact us via our website](https://www.oculusd.com/).
