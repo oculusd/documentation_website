@@ -18,8 +18,9 @@
       <h1 class="logo">OculusD <span class="logo__thin">Docs</span></h1>
       <ul class="menu">
         <div class="menu__item toggle"><span></span></div>
-        <li class="menu__item"><a href="https://github.com/oculusd" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
+        <li class="menu__item"><a href="doc.html" class="link link--dark"><i class="fa fa-book"></i> Documentation</a></li>
         <li class="menu__item"><a href="index.html" class="link link--dark"><i class="fa fa-home"></i> Home</a></li>
+        <li class="menu__item"><a href="https://github.com/oculusd" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
       </ul>
     </nav>
     <div class="wrapper">
@@ -29,40 +30,87 @@
           <li class="js-btn">Where does what fit in</li>
           <li class="js-btn">First step</li>
           <li class="js-btn">Where to from here</li>
-          <li class="js-btn">Current project status and road map</li>
+          <li class="js-btn">Current cloud service status and road map</li>
+          <li class="js-btn">Current library and application status and road map</li>
         </ul>
       </aside>
       <article class="doc__content">
         <section class="js-section">
           <h3 class="section__title">What is this all about</h3>
-          <p>This documentation will soon be updated</p>
-
+          <p>
+            OculusD.com, Inc. is a company that provide a platform, services and applications aimed at the 
+            <u><a href="https://en.wikipedia.org/wiki/Internet_of_things">IoT</a></u> and 
+            <u><a href="https://en.wikipedia.org/wiki/Internet_of_things#Manufacturing">IIoT</a></u>
+            markets. In essence, this means that any "thing" connected to the Internet could use OculusD to log sensor 
+            data. At a later stage, the data can be queried, analysed and processed in ways that will help you 
+            understand or monitor your environment and perhaps even learn something new!
+          </p>
+          <p>
+            The overall solution consists of three parts:
+            <ul>
+              <li>Platform - A cloud based platform where all data is aggregated</li>
+              <li>Services - Additional value add services that will be provided by OculusD to query and analyse your data.</li>
+              <li>Applications - The software applications (and libraries) you will need to integrate your IoT/IIoT things with OculusD</li>
+            </ul>
+          </p>
         </section>
         
         <section class="js-section">
           <h3 class="section__title">Where does what fit in</h3>
-          <p></p>
-          <p></p>
+          <p>
+            <img src="images/doc_intro_usage.png">
+          </p>
+          <p>
+            The cloud platform is where all the RESTFul API end-points are you need to integrate to. It is depicted in 
+            the diagram as the "OculusD Service".
+          </p>
+          <p>
+            Under most circumstances, you will manage your account(s) and things from a Workstation. This is a computer 
+            you typically have full access to and can trust as this is where your credentials and profiles will be saved 
+            within your environment (don't worry - if you loose anything, it can be re-created from data in the cloud!).
+          </p>
+          <p>
+            On the workstation, you will typically install several tools:
+            <ul>
+              <li><u><a href="https://github.com/oculusd/odc_pycommons">odc_pycommons</a></u> - The common Python libraries used by all Python based applications integrating to OculusD</li>
+              <li>odc_pyadminlibs - The Python libraries required to perform administrative tasks</li>
+            </ul>
+          </p>
+          <p>
+            From the Workstation, you will also export specific configurations to be installed and/or used on your 
+            "things".
+          </p>
+          <p>
+            On your "thing" (a <u><a href="https://www.raspberrypi.org/">Raspberry Pi</a></u> in this example, with a <u><a href="https://learn.adafruit.com/tmp006-temperature-sensor-python-library/overview">TMP006 Temperature Sensor</a></u>), additional libraries and 
+            applications will be required to collect and send data to the OculusD Service.
+          </p>
+          <p>
+            On the thing, you will typically install the following tools (based on the example in the image):
+            <ul>
+              <li><u><a href="https://github.com/oculusd/odc_pycommons">odc_pycommons</a></u> - The common Python libraries used by all Python based applications integrating to OculusD</li>
+              <li>odapp_pysysmon - Python based system monitoring (CPU, Memory, Storage and various on board sensors</li>
+              <li>odapp_pysensors - Python based application that uses the configuration generated from the Workstation, with potentially additional libraries, to collect data from sensors and send the data to OculusD</li>
+            </ul>
+          </p>
           <hr />
         </section>
 
         <section class="js-section">
           <h3 class="section__title">First step</h3>
-          <p></p>
-          <p></p>
+          <p>Under Construction...</p>
           <hr />
         </section>
 
         <section class="js-section">
           <h3 class="section__title">Where to from here</h3>
-          <p></p>
-          <p></p>
+          <p>Under Construction...</p>
+          <hr />
         </section>
 
         <section class="js-section">
-            <h3 class="section__title">Current project status and road map</h3>
+            <h3 class="section__title">Current cloud service status and road map</h3>
             <p>In a nutshell, this project is in early start-up phase and all code and interfaces should be considered ALPHA version.</p>
-            <p>Below is a list if features, mapped to the diagram above, with the implementation status as of 2 November 2018</p>
+            <p>Below is a list of features, mapped to the diagram above, with the implementation status as of 2 November 2018. The unfinished items appear in no particular order.</p>
             <table id="customers">
                 <tr>
                   <th>Feature</th>
@@ -70,23 +118,172 @@
                   <th>Description</th>
                 </tr>
                 <tr>
-                  <td>encryption</td>
-                  <td>encrypt all notes before saving. If turned on, it requires password to open the file.</td>
-                  <td>false</td>
+                  <td>Root Account Creation</td>
+                  <td>Yes</td>
+                  <td>Allow new root accounts to be created</td>
                 </tr>
                 <tr>
-                  <td>highlighting</td>
-                  <td>Show syntax highlight on markdown text.</td>
-                  <td>true</td>
+                  <td>Roor Account Activation</td>
+                  <td>Yes</td>
+                  <td>Allow users to activate their new root account</td>
                 </tr>
                 <tr>
-                  <td>prettyTable</td>
-                  <td>Render table with Scribbler’s pretty table style.</td>
-                  <td>true</td>
+                  <td>Root Account Authentication</td>
+                  <td>Yes</td>
+                  <td>Authenticate against root account credentials and obtain a temporary (24 hour) period token to perform administrative functions</td>
                 </tr>
+                <tr>
+                  <td>Thing Definition</td>
+                  <td>Partial</td>
+                  <td>Ability to define a Thing. Currently only an authenticated Root Account can define things</td>
+                </tr>
+                <tr>
+                  <td>Create Thing Token</td>
+                  <td>Partial</td>
+                  <td>Use (only) a Root Account to create a thing token. A thing token is required by "things" to send data to the OculusD Cloud</td>
+                </tr>
+                <tr>
+                  <td>Thing Log Data</td>
+                  <td>Yes</td>
+                  <td>Log sensor data from a Thing</td>
+                </tr>
+                <tr>
+                  <td>Delete a Thing</td>
+                  <td>Partial</td>
+                  <td>(Only) An authenticated Root Account can currently delete a previously defined Thing</td>
+                </tr>
+                <tr>
+                  <td>Modify A Thing - Add Sensors</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Modify A Thing - Delete Sensors</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Modify A Thing -  Modify Sensors</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Query thing and sensor data</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Download Thing Data</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Define a User</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Define a Thing Group</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Link User to Thing Group</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Bulk Sensor Data Upload</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>User Maintenance - Deactivate a User</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>User Maintenance - Reset Credentials</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Credentials Recovery - Root Account</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Credentials Recovery - User Account</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <tr>
+                  <td>Create a thing configuration</td>
+                  <td>No</td>
+                  <td>Feature has not yet been implemented</td>
+                </tr>
+                <!--
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                -->
               </table>
           </section>
     
+          <section class="js-section">
+            <h3 class="section__title">Current library and application status and road map</h3>
+            <p>Below is a list of libraries and application, mapped to the diagram above, with the implementation status as of 2 November 2018</p>
+            <table id="customers">
+                <tr>
+                  <th>Repository</th>
+                  <th>Status</th>
+                  <th>Language/Framework</th>
+                  <th>Platform</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td><u><a href="https://github.com/oculusd/odc_pycommons">odc_pycommons</a></u></td>
+                  <td>Version 0.0.1 available</td>
+                  <td>Python 3.6+</td>
+                  <td>Any that support Python 3.6+</td>
+                  <td>Library containing common code for all other libraries and applications, for example communication routines and the data models</td>
+                </tr>
+                <tr>
+                  <td>odc_pyadminlibs</td>
+                  <td>Development</td>
+                  <td>Python 3.6+</td>
+                  <td>Any that support Python 3.6+</td>
+                  <td>Actions to be performed by Root Account and User Accounts</td>
+                </tr>
+                <tr>
+                  <td>odapp_pysysmon</td>
+                  <td>Planning</td>
+                  <td>Python 3.6+</td>
+                  <td>Any that support Python 3.6+</td>
+                  <td>Cross platform basic operating system monitoring application that monitor CPU, Memory, Disk and other sensor information</td>
+                </tr>
+                <tr>
+                  <td>odapp_pysensors</td>
+                  <td>Planning</td>
+                  <td>Python 3.6+</td>
+                  <td>Any that support Python 3.6+</td>
+                  <td>Generic application that can be extended by custom code to read sensor data and submit the sensor data to the cloud</td>
+                </tr>
+                <!--
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                -->
+              </table>
+            <hr />
+          </section>
+
       </article>
     </div>
 
