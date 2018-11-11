@@ -10,7 +10,7 @@
   --medium-gray-color: #959DA5;
   --dark-gray-color: #444D56; 
   --bg-color: #F8F8FA;
-  --code-bg-color: #F0E8E8;
+  --code-bg-color: rgb(90, 90, 90);
 }
 
 /* normalized */
@@ -92,7 +92,7 @@ hr {
 .code {
   border-radius: 3px;
   font-family: Space Mono, SFMono-Regular, Menlo,Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  background: var(--bg-color);
+  background: var(--code-bg-color);
   border: 1px solid var(--code-bg-color);
   color: var(--primary-color-light);
 }

@@ -24,19 +24,39 @@
       </ul>
     </nav>
     <div class="wrapper">
+      
+      <!--
       <aside class="doc__nav">
         <ul>
           <li class="js-btn selected">What is this all about</li>
           <li class="js-btn">Where does what fit in</li>
-          <li class="js-btn">First step</li>
+          <li class="js-btn">First steps</li>
           <li class="js-btn">Where to from here</li>
           <li class="js-btn">Current cloud service status and road map</li>
           <li class="js-btn">Current library and application status and road map</li>
         </ul>
       </aside>
+      -->
+
       <article class="doc__content">
+
+          <section>
+            <h3 class="section__title">Summary of Contents</h3>
+            <p>
+              <ul>
+                <li><u><a href="#menu_1">What is this all about</a></u></li>
+                <li><u><a href="#menu_2">Where does what fit in</a></u></li>
+                <li><u><a href="#menu_3">First steps</a></u></li>
+                <li><u><a href="#menu_4">Where to from here</a></u></li>
+                <li><u><a href="#menu_5">Current cloud service status and road map</a></u></li>
+                <li><u><a href="#menu_6">Current library and application status and road map</a></u></li>
+              </ul>
+            </p>
+          </section>
+
+
         <section class="js-section">
-          <h3 class="section__title">What is this all about</h3>
+          <h3 class="section__title" id="menu_1">What is this all about</h3>
           <p>
             OculusD.com, Inc. is a company that provide a platform, services and applications aimed at the 
             <u><a href="https://en.wikipedia.org/wiki/Internet_of_things">IoT</a></u> and 
@@ -56,7 +76,7 @@
         </section>
         
         <section class="js-section">
-          <h3 class="section__title">Where does what fit in</h3>
+          <h3 class="section__title" id="menu_2">Where does what fit in</h3>
           <p>
             <img src="images/doc_intro_usage.png">
           </p>
@@ -73,7 +93,7 @@
             On the workstation, you will typically install several tools:
             <ul>
               <li><u><a href="https://github.com/oculusd/odc_pycommons">odc_pycommons</a></u> - The common Python libraries used by all Python based applications integrating to OculusD</li>
-              <li>odc_pyadminlibs - The Python libraries required to perform administrative tasks</li>
+              <li><u><a href="https://github.com/oculusd/odc_pyadminlibs">odc_pyadminlibs</a></u> - The Python libraries required to perform administrative tasks</li>
             </ul>
           </p>
           <p>
@@ -96,19 +116,356 @@
         </section>
 
         <section class="js-section">
-          <h3 class="section__title">First step</h3>
+          <h3 class="section__title" id="menu_3">First steps</h3>
+          <p>
+            The basic requirements to get started is to create a root account. A root account is the account that will 
+            be billed and can also be used as an administrative account to manage other users and features.
+          </p>
+
+          <!-- 
+            Example Step Code Block 
+            =======================
+
+          <div style="margin-left: 50px">
+            <h4 class="section__title">Step Title</h4>
+            <div style="margin-left: 50px">
+              <p>
+                Intro Paragraph
+              </p>
+              <p>
+                <b>Sub Step Heading...</b><br />            
+                <div style="margin-left: 50px">
+                  <p>Stuff....</p>
+                </div>
+              </p>
+              <p>
+                <b>Sub Step Heading...</b><br />            
+                <div style="margin-left: 50px">
+                  <p>Stuff....</p>
+
+                  <p>
+                    CODE Example:
+                    <div  style="background-color: rgb(226, 225, 225);">
+                      <pre>
+                        <code>
+$ python3 --version
+Python 3.7.0
+                        </code>
+                      </pre>
+                    </div>    
+                  </p>
+
+                </div>
+              </p>
+            </div>
+            <hr />
+          </div>
+
+          -->
+
+          <!-- Step 1 - Install the required applications and libraries -->
+
+          <div style="margin-left: 50px">
+            <h4 class="section__title">Install the required applications and libraries</h4>
+            <div style="margin-left: 50px">
+              <p>
+                The following are pre-requisites for the <code>Workstation</code> which you will use for the 
+                administrative functions:
+                <ul>
+                  <li>A modern operating system, for example Windows 10, Mac OSX or one of the many excellent Linux distributions</li>
+                  <li>Internet connectivity, allowing TCP port 443 out to the Internet</li>
+                  <li><a href="https://www.python.org/">Python</a> version 3.6+</li>
+                  <li>You should be familiar with the command line</li>
+                </ul>
+              </p>
+              <p>
+                <b>Ensure you have a supported Python version:</b><br />            
+                <div style="margin-left: 50px">
+                  <p>
+                    Try the following command in a terminal (command prompt for Windows users):
+                    <div  style="background-color: rgb(226, 225, 225);">
+                      <pre>
+                        <code>
+$ python3 --version
+Python 3.7.0
+                        </code>
+                      </pre>
+                    </div>                    
+                  </p>
+                </div>
+              </p>
+              <p>
+                <b>Sub Step Heading...</b><br />            
+                <div style="margin-left: 50px">
+                  <p>Stuff....</p>
+                </div>
+              </p>
+            </div>
+            <hr />
+          </div>
+
+          <!-- End Step 1 -->
+
+          <!-- Step 2 - Create a root account -->
+
+          <div style="margin-left: 50px">
+            <h4 class="section__title">Creating a root account</h4>
+            <div style="margin-left: 50px">
+              <p>
+                The following example demonstrate the creation of a root account using the Python Libraries.
+              </p>
+              <div  style="background-color: rgb(226, 225, 225);">
+                <pre>
+                  <code>
+    >>> from odc_pyadminlibs.actions.register import root_account_registration
+    >>> reg_result = root_account_registration(email_address='your-name@example.tld', passphrase='...a strong passphrase...', account_name='Demo Account', persist_with_passphrase=True)
+    >>> reg_result
+    {
+      'IsError': False, 
+      'TraceId': None, 
+      'RemoteTraceId': '20181107-7224-8557-2117-5640', 
+      'ErrorMessage': None, 
+      'Message': 'Root account created...', 
+      'RootAccountObj': &#60;odc_pycommons.models.RootAccount object at 0x10a1d9f98&#62;
+    }
+                    </code>
+                  </pre>
+                </div>
+              <p>
+                <b>Required Input Parameters</b><br />            
+                <div style="margin-left: 50px">
+                  <table id="rip01">
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td>email_address</td>
+                      <td>String</td>
+                      <td>A valid e-mail address</td>
+                    </tr>
+                    <tr>
+                      <td>passphrase</td>
+                      <td>String</td>
+                      <td>
+                        A passphrase with the following minimum requirements:
+                        <ul>
+                          <li>Minimum Length: 20 characters</li>
+                          <li>Maximum Length: 255 characters</li>
+                        </ul>
+                        <b><i>Note</i></b>: It is a good idea to research ways on how to create strong passwords/passphrases.
+                        Have a look at this <u><a href="https://lifehacker.com/how-to-create-secure-passwords-that-arent-impossible-to-1825048324" target="_blank">lifehacker.com</a></u> 
+                        article if you are new to this concept.
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>account_name</td>
+                        <td>String</td>
+                        <td>Free form text field with a human friendly account name</td>
+                      </tr>
+                  </table>
+                </div>
+              </p>
+              <p>
+                <b>Optional Input Parameters</b><br />            
+                <div style="margin-left: 50px">
+                  <table id="rip01">
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td>persist_with_passphrase</td>
+                      <td>Boolean</td>
+                      <td>A flag to indicate if the passphrase must be persisted as well (default=False)</td>
+                    </tr>
+                  </table>
+                </div>
+              </p>
+              <p>
+                <b>Output - Function return result</b>
+                <div style="margin-left: 50px">
+                  The result is in the form of a Python dictionary, with the following fields:
+                  <table id="rip01">
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr>
+                      <td>IsError</td>
+                      <td>This is a boolean type which will only be True if the remote call returned an error or if some other exception occurred</td>
+                    </tr>
+                    <tr>
+                      <td>TraceId</td>
+                      <td>Echo ot the optional trace id you can supply as input to the function.</td>
+                    </tr>
+                    <tr>
+                      <td>RemoteTraceId</td>
+                      <td>A trace id returned from the remote service. When you require support it will help a great deal if you can supply the remote trace id.</td>
+                    </tr>
+                    <tr>
+                      <td>ErrorMessage</td>
+                      <td>If an error was generated, this will typically hold the message generated by that error.</td>
+                    </tr>
+                    <tr>
+                      <td>Message</td>
+                      <td>A general message from the remote service</td>
+                    </tr>
+                    <tr>
+                      <td>RootAccountObj</td>
+                      <td>The root account Python object</td>
+                    </tr>
+                  </table>
+                </div>
+              </p>
+              <p>
+                <b>Output - Configuration Files</b>
+              </p>
+              <div style="margin-left: 50px">
+                <p>
+                  When the command executed successfully, it will also create a local configuration directory and file. The 
+                  default location is in <code>$HOME/.oculusdcli</code>
+                </p>
+                <p>
+                  The file generated will be called <code>root_account</code> and is a SQLite file you can open with any SQLite 
+                  compatible application/library.
+                </p>
+                <p>
+                  <b><i>IMPORTANT</i></b>: Since this file contain credentials, it is strongly recommended that you restrict
+                  access to this directory using your operating system&#39;s features for these purposes.
+                  Here are some quick Google searches to get you going:
+                  <ul>
+                    <li><u><a href="https://www.google.co.za/search?q=directory+permissions+in+windows+10" target="_blank">Windows 10</a></u></li>
+                    <li><u><a href="https://www.google.co.za/search?q=directory+permissions+in+osx" target="_blank">Apple Mac OSX</a></u></li>
+                    <li><u><a href="https://www.google.co.za/search?q=directory+permissions+in+linux" target="_blank">Linux</a></u></li>
+                  </ul>
+                </p>
+              </div>
+              <p>
+                <b>Output - E-Mail</b>
+              </p>
+              <div style="margin-left: 50px">
+                <p>
+                  You should also receive an e-mail with an activation code. This code is required in the next step 
+                  (activation).
+                </p>
+                <p>
+                  <b><i>IMPORTANT</i></b>: The activation code is only valid for 24 hours. If you fail to activate your 
+                  account in 24 hours you may need to log a support ticket in order to use the same e-mail address again.
+                </p>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <!-- End Step 2 -->
+
+          <!-- Step 3 - Activate a root account -->
+
+          <div style="margin-left: 50px">
+              <h4 class="section__title">Activate a root account</h4>
+              <div style="margin-left: 50px">
+                <p>
+                  The following example demonstrate the activation of a root account using the Python Libraries.
+                </p>
+                <div  style="background-color: rgb(226, 225, 225);">
+                  <pre>
+                    <code>
+      >>> from odc_pyadminlibs.actions.activation import activate_root_account
+      >>> act_result = activate_root_account(root_account=reg_result['RootAccountObj'], activation_token='...the activation code you received via email...')
+      >>> act_result
+      {
+        'IsError': False, 
+        'TraceId': None, 
+        'RemoteTraceId': '20181108-8224-9621-2944-3980', 
+        'ErrorMessage': None, 
+        'Message': 'Activated root account "...."'
+      }
+                      </code>
+                    </pre>
+                  </div>
+                <p>
+                  <b>Required Input Parameters</b><br />            
+                  <div style="margin-left: 50px">
+                    <table id="rip01">
+                      <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                      <tr>
+                        <td>root_account</td>
+                        <td>RootAccount</td>
+                        <td>A root account that contains the information required for account activation</td>
+                      </tr>
+                      <tr>
+                        <td>activation_token</td>
+                        <td>String</td>
+                        <td>
+                          The activation token you received via e-amil
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </p>
+                <p>
+                  <b>Output - Function return result</b>
+                  <div style="margin-left: 50px">
+                    The result is in the form of a Python dictionary, with the following fields:
+                    <table id="rip01">
+                      <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                      </tr>
+                      <tr>
+                        <td>IsError</td>
+                        <td>This is a boolean type which will only be True if the remote call returned an error or if some other exception occurred</td>
+                      </tr>
+                      <tr>
+                        <td>TraceId</td>
+                        <td>Echo ot the optional trace id you can supply as input to the function.</td>
+                      </tr>
+                      <tr>
+                        <td>RemoteTraceId</td>
+                        <td>A trace id returned from the remote service. When you require support it will help a great deal if you can supply the remote trace id.</td>
+                      </tr>
+                      <tr>
+                        <td>ErrorMessage</td>
+                        <td>If an error was generated, this will typically hold the message generated by that error.</td>
+                      </tr>
+                      <tr>
+                        <td>Message</td>
+                        <td>A general message from the remote service</td>
+                      </tr>
+                    </table>
+                  </div>
+                </p>
+                <p>
+                  <b>Output - E-Mail</b>
+                </p>
+                <div style="margin-left: 50px">
+                  <p>
+                    You should also receive an e-mail a final confirmation that your account is now active
+                  </p>
+                </div>
+              </div>
+              <hr />
+            </div>
+  
+            <!-- End Step 3 -->
+
+        </section>
+
+        <section class="js-section">
+          <h3 class="section__title" id="menu_4">Where to from here</h3>
           <p>Under Construction...</p>
           <hr />
         </section>
 
         <section class="js-section">
-          <h3 class="section__title">Where to from here</h3>
-          <p>Under Construction...</p>
-          <hr />
-        </section>
-
-        <section class="js-section">
-            <h3 class="section__title">Current cloud service status and road map</h3>
+            <h3 class="section__title"  id="menu_5">Current cloud service status and road map</h3>
             <p>In a nutshell, this project is in early start-up phase and all code and interfaces should be considered ALPHA version.</p>
             <p>Below is a list of features, mapped to the diagram above, with the implementation status as of 2 November 2018. The unfinished items appear in no particular order.</p>
             <table id="customers">
@@ -233,7 +590,7 @@
           </section>
     
           <section class="js-section">
-            <h3 class="section__title">Current library and application status and road map</h3>
+            <h3 class="section__title" id="menu_6">Current library and application status and road map</h3>
             <p>Below is a list of libraries and application, mapped to the diagram above, with the implementation status as of 2 November 2018</p>
             <table id="customers">
                 <tr>
@@ -251,8 +608,8 @@
                   <td>Library containing common code for all other libraries and applications, for example communication routines and the data models</td>
                 </tr>
                 <tr>
-                  <td>odc_pyadminlibs</td>
-                  <td>Development</td>
+                  <td><u><a href="https://github.com/oculusd/odc_pyadminlibs">odc_pyadminlibs</a></u></td>
+                  <td>Version 0.0.1 available</td>
                   <td>Python 3.6+</td>
                   <td>Any that support Python 3.6+</td>
                   <td>Actions to be performed by Root Account and User Accounts</td>
