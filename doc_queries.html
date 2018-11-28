@@ -167,9 +167,138 @@ timestamp,1 Minute Load Average,15 Minute Load Average,5 Minute Load Average
                             <th>Description</th>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>root_account</td>
+                            <td>RootAccount</td>
+                            <td>An authenticated <i>RootAccount</i></td>
+                        </tr>
+                        <tr>
+                            <td>thing</td>
+                            <td>Thing</td>
+                            <td>The <i>Thing</i> you want to query</td>
+                        </tr>
+                        <tr>
+                            <td>sensor_name</td>
+                            <td>str</td>
+                            <td>A sensor name as defined in the <i>Thing</i></td>
+                        </tr>
+                    </table>
+                </div>
+            </p>
+            <p>
+                <div style="margin-left: 50px">
+                    <b>Optional Input Parameters</b><br />      
+                    <table id="rip01">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>timestamp_start</td>
+                            <td>int</td>
+                            <td>The Unix timestamp of the start time of the query. Default=24 hours ago from now</td>
+                        </tr>
+                        <tr>
+                            <td>timestamp_stop</td>
+                            <td>int</td>
+                            <td>The Unix timestamp of the stop time of the query. Default=5 minutes ago from now</td>
+                        </tr>
+                        <tr>
+                            <td>timestamp_source</td>
+                            <td>str</td>
+                            <td>Either 'SERVER' or 'ORIGIN'. Server time is the default. Origin time is the timestamp supplied when the data was captured as supplied by your <i>Thing</i></td>
+                        </tr>
+                        <tr>
+                            <td>limit</td>
+                            <td>int</td>
+                            <td>How many rows to return per <i>Sensor</i> axis. If the sensor has 3 axes and the limit is 10, expect up to 30 records in total. Minimum is 1 and maximum is 10,000. Default=1000</td>
+                        </tr>
+                        <tr>
+                            <td>axis_names</td>
+                            <td>list of str</td>
+                            <td>The <i>Sensor</i>axis names.</td>
+                        </tr>
+                        <tr>
+                            <td>persist_to_file</td>
+                            <td>bool</td>
+                            <td>Flag to indicate if you want to save the result to file (CSV format). Default=False</td>
+                        </tr>
+                        <tr>
+                            <td>file_path</td>
+                            <td>str</td>
+                            <td>Path to the file. Required if <i>persist_to_file</i> is True. Default=None</td>
+                        </tr>
+                        <tr>
+                            <td>separate_file_per_axis</td>
+                            <td>bool</td>
+                            <td>The recordd for each <i>Sensor</i> axis will be saved in separate files if this is set to True. Default=False</td>
+                        </tr>
+                        <tr>
+                            <td>service_region</td>
+                            <td>str</td>
+                            <td>The region in which your data is located. Ignored at this stage.</td>
+                        </tr>
+                        <tr>
+                            <td>return_data_set</td>
+                            <td>bool</td>
+                            <td>If True, the data-set will be returned when the function returns. Default=True</td>
+                        </tr>
+                        <tr>
+                            <td>trace_id</td>
+                            <td>str</td>
+                            <td>A trace-id that will be returned with the result. Can be used as the user sees fit and is useful in complex or large application for tracing purposes. Default=None</td>
+                        </tr>
+                    </table>
+                </div>
+            </p>
+            <p>
+                <div style="margin-left: 50px">
+                    <b>Result Dict</b><br />      
+                    <table id="rip01">
+                        <tr>
+                            <th>Dict Key</th>
+                            <th>Value Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>IsError</td>
+                            <td>bool</td>
+                            <td>Indicates if the function failed or not. Success=False</td>
+                        </tr>
+                        <tr>
+                            <td>ErrorMessage</td>
+                            <td>str</td>
+                            <td>When <i>IsError</i> is True this will hold the error message or stack trace. Can be None</td>
+                        </tr>
+                        <tr>
+                            <td>TraceId</td>
+                            <td>str</td>
+                            <td>Same value as the <i>trace_id</i> used when the function was called</td>
+                        </tr>
+                        <tr>
+                            <td>RemoteTraceId</td>
+                            <td>str</td>
+                            <td>A trace-id returned by the remote service. Use this reference when asking for assistance from support</td>
+                        </tr>
+                        <tr>
+                            <td>Message</td>
+                            <td>str</td>
+                            <td>Optional message from the remote service.</td>
+                        </tr>
+                        <tr>
+                            <td>TotalRecordsReturned</td>
+                            <td>int</td>
+                            <td>If records where found, indicate the total records for all axes. A value of '0' indicates an empty data-set</td>
+                        </tr>
+                        <tr>
+                            <td>CsvData</td>
+                            <td>str</td>
+                            <td>The CSV data in a str</i></td>
+                        </tr>
+                        <tr>
+                            <td>PersistedFilename</td>
+                            <td>str</td>
+                            <td>Comma separated list of filename generated if the <i>persist_to_file</i> option was True</td>
                         </tr>
                     </table>
                 </div>
