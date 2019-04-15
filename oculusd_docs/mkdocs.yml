@@ -1,0 +1,13 @@
+site_name: OculusD.com, Inc. API Documentation (API v2)
+
+nav:
+  - Home: index.md
+  - Introduction: intro.md
+
+theme: readthedocs
+
+markdown_extensions:
+  - toc:
+      permalink: "#"
+
+use_directory_urls: false
