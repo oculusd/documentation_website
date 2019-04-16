@@ -31,4 +31,4 @@ On the thing, you will typically install the following tools (based on the examp
 * odapp_pysysmon - Python based system monitoring (CPU, Memory, Storage and various on board sensors
 * odapp_pysensors - Python based application that uses the configuration generated from the Workstation, with potentially additional libraries, to collect data from sensors and send the data to OculusD
 
-
+**NOTE**: The above utilities and libraries still need to be updated to the latest deployed API version. For now we strongly suggest experienced users refer to the [Swagger UI](https://data-us1.oculusd.com/v2/ui/) which we have also [documented here](swagger.md) for integration into your projects.

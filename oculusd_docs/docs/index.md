@@ -2,7 +2,7 @@
 
 This documentation site covers version 2 of the API as of April 2019.
 
-The API also has a [Swagger Interface](https://data-us1.oculusd.com/v2/ui/) for those who would like to delve right in.
+The API also has a [Swagger Interface](https://data-us1.oculusd.com/v2/ui/) for those who would like to delve right in. More detailed instruction is available [in this guide](swagger.md).
 
 ## Recommended Reading
 
