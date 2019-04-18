@@ -36,21 +36,25 @@ You will need the following:
 
 If you are not using the Swagger UI, run the following command in a terminal/shell
 
-    $ curl -X GET "https://data-us1.oculusd.com/v2/accept-new-root-accounts" -H  "accept: application/json"
+```bash
+$ curl -X GET "https://data-us1.oculusd.com/v2/accept-new-root-accounts" -H  "accept: application/json"
+```
 
 ##### Expected output
 
 The JSON output to expect will look something like the message below
 
-    {
-        "Data": {
-            "CreateNewRootAccount": true
-        },
-        "ErrorMessage": null,
-        "IsError": false,
-        "Message": "We are open for new business",
-        "TraceId": "0Kdl-kAUM-WChl-gtiv"
-    }
+```json
+{
+    "Data": {
+        "CreateNewRootAccount": true
+    },
+    "ErrorMessage": null,
+    "IsError": false,
+    "Message": "We are open for new business",
+    "TraceId": "0Kdl-kAUM-WChl-gtiv"
+}
+```
 
 If the `CreateNewRootAccount` field value is `true`, a new root account can be created.
 
@@ -81,25 +85,29 @@ The requirements for the passphrase:
 
 The following example shows how to use curl(1) to create a new root account:
 
-    $ curl -X POST "https://data-us1.oculusd.com/v2/register/root-account/your-email-address@example.tld" \
-    -H  "accept: application/json" \
-    -H  "Content-Type: application/json" \
-    -d "{\"AccountName\":\"Temp account for documentation\",\"PassPhrase\":\"A very strong passphrase is easy to remember\"}"
+```bash
+$ curl -X POST "https://data-us1.oculusd.com/v2/register/root-account/your-email-address@example.tld" \
+-H  "accept: application/json" \
+-H  "Content-Type: application/json" \
+-d "{\"AccountName\":\"Temp account for documentation\",\"PassPhrase\":\"A very strong passphrase is easy to remember\"}"
+```
 
 ##### Expected output
 
 A successful registration will result in a message like the one below. Take note of the `RootAccountId`:
 
-    {
-        "Data": {
-            "RootAccountId": "raber6mk7",
-            "RootAccountStatus": "PENDING"
-        },
-        "ErrorMessage": null,
-        "IsError": false,
-        "Message": "RootAccount created successfully",
-        "TraceId": "pD7K-axnw-JUos-CLxz"
-    }
+```json
+{
+    "Data": {
+        "RootAccountId": "raber6mk7",
+        "RootAccountStatus": "PENDING"
+    },
+    "ErrorMessage": null,
+    "IsError": false,
+    "Message": "RootAccount created successfully",
+    "TraceId": "pD7K-axnw-JUos-CLxz"
+}
+```
 
 #### Activate root account
 
@@ -121,10 +129,12 @@ You will need the following:
 
 Use the following example curl(1) command to activate your account:
 
-    $ curl -X POST "https://data-us1.oculusd.com/v2/activate/root-account/raber6mk7/xxxx...." -H \
-    "accept: application/json" \
-    -H  "Content-Type: application/json" \
-    -d "{\"Passphrase\":\"A very strong passphrase is easy to remember\"}"
+```bash
+$ curl -X POST "https://data-us1.oculusd.com/v2/activate/root-account/raber6mk7/xxxx...." -H \
+"accept: application/json" \
+-H  "Content-Type: application/json" \
+-d "{\"Passphrase\":\"A very strong passphrase is easy to remember\"}"
+```
 
 Note: The `xxxx....` represents the activation token you received via e-mail.
 
@@ -132,13 +142,15 @@ Note: The `xxxx....` represents the activation token you received via e-mail.
 
 On successful activation you will receive the following messages:
 
-    {
-        "Data": null,
-        "ErrorMessage": null,
-        "IsError": false,
-        "Message": "RootAccount activated successfully",
-        "TraceId": "eLm7-Olww-TWf1-zmet"
-    }
+```json
+{
+    "Data": null,
+    "ErrorMessage": null,
+    "IsError": false,
+    "Message": "RootAccount activated successfully",
+    "TraceId": "eLm7-Olww-TWf1-zmet"
+}
+```
 
 You will also receive a final confirmation e-mail stating that your account was activated.
 
@@ -162,22 +174,26 @@ You will need the following information to authenticate:
 
 Run the following command using curl(1):
 
-    $ curl -X POST "https://data-us1.oculusd.com/v2/account/root-account/raber6mk7/authenticate" \
-    -H  "accept: application/json" \
-    -H  "Content-Type: application/json" \
-    -d "{\"Passphrase\":\"A very strong passphrase is easy to remember\",\"TokenTTL\":300}"
+```bash
+$ curl -X POST "https://data-us1.oculusd.com/v2/account/root-account/raber6mk7/authenticate" \
+-H  "accept: application/json" \
+-H  "Content-Type: application/json" \
+-d "{\"Passphrase\":\"A very strong passphrase is easy to remember\",\"TokenTTL\":300}"
+```
 
 ##### Expected output
 
 After successfully authenticating, you will receive the following output:
 
-    {
-        "Data": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJEYXRhIjoic1grTlVxL2c0QldCM1MvT3Mvb053YU1wMHZ3L29KM28zUVNzTVQ0Rkd1K0ZQQkxDcWdkYkxrNllTYnZ3OFdaSmtxSEp2V0hrcGlnazVHcGpHUkdHdlpIVEdHYmVaUnNXcnkxRTRFZFB5Ky9MNFVvb1NSbnc0MmcxSFZqd1NOVE55MTljMHpvMlFWWlFkSVVIT3A5aHk4K2M1K3FiYWg4OE5ScVEvVWt1dGtQTWxINWRhQWtkMHljZXFrRXVzMTFqOEdBTTRmVjJteFV4ZDdtYWVWWWpOZi83VkdaVE5MbXYwWmMvYnZJem1MNnRML005a1ludzA1cWRDQTlGL3Rld3ZiclFQQjcrbUJUT1hyenc2MXRHdytPVXRacE4xWWlpTTgrT3hsdURBbHA2UE9DRSIsInN1YiI6Im9jdWx1c2QifQ.WlVCPzfJFFKBoV9DFyvbu2oFIdOnPpOZvl5Hd6Voh0A",
-        "ErrorMessage": null,
-        "IsError": false,
-        "Message": "RootAccount authenticated successfully. Warnings: []",
-        "TraceId": "1ABW-qfWf-7sFj-cq8U"
-    }
+```json
+{
+    "Data": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJEYXRhIjoic1grTlVxL2c0QldCM1MvT3Mvb053YU1wMHZ3L29KM28zUVNzTVQ0Rkd1K0ZQQkxDcWdkYkxrNllTYnZ3OFdaSmtxSEp2V0hrcGlnazVHcGpHUkdHdlpIVEdHYmVaUnNXcnkxRTRFZFB5Ky9MNFVvb1NSbnc0MmcxSFZqd1NOVE55MTljMHpvMlFWWlFkSVVIT3A5aHk4K2M1K3FiYWg4OE5ScVEvVWt1dGtQTWxINWRhQWtkMHljZXFrRXVzMTFqOEdBTTRmVjJteFV4ZDdtYWVWWWpOZi83VkdaVE5MbXYwWmMvYnZJem1MNnRML005a1ludzA1cWRDQTlGL3Rld3ZiclFQQjcrbUJUT1hyenc2MXRHdytPVXRacE4xWWlpTTgrT3hsdURBbHA2UE9DRSIsInN1YiI6Im9jdWx1c2QifQ.WlVCPzfJFFKBoV9DFyvbu2oFIdOnPpOZvl5Hd6Voh0A",
+    "ErrorMessage": null,
+    "IsError": false,
+    "Message": "RootAccount authenticated successfully. Warnings: []",
+    "TraceId": "1ABW-qfWf-7sFj-cq8U"
+}
+```
 
 The `Data` field contain your token to be used in subsequent commands.
 
@@ -204,28 +220,32 @@ When a new root account is created, a default thing group is created. You will n
 
 Run the following curl(1) command to obtain a list of thing groups:
 
-    $ curl -X GET "https://data-us1.oculusd.com/v2/thinggroup/root-account-context/raber6mk7/list-groups" \
-    -H  "accept: application/json" \
-    -H  "Authorization: Bearer aaa.bbb.ccc"
+```bash
+$ curl -X GET "https://data-us1.oculusd.com/v2/thinggroup/root-account-context/raber6mk7/list-groups" \
+-H  "accept: application/json" \
+-H  "Authorization: Bearer aaa.bbb.ccc"
+```
 
 ##### Expected output
 
 The following output can be expected:
 
-    {
-        "Data": {
-            "ThingGroups": [
-            {
-                "ThingGroupId": "tgberbkrib",
-                "ThingGroupName": "Default Thing Group"
-            }
-            ]
-        },
-        "ErrorMessage": null,
-        "IsError": false,
-        "Message": null,
-        "TraceId": "iGGb-0E4m-1AuG-dKzp"
-    }
+```json
+{
+    "Data": {
+        "ThingGroups": [
+        {
+            "ThingGroupId": "tgberbkrib",
+            "ThingGroupName": "Default Thing Group"
+        }
+        ]
+    },
+    "ErrorMessage": null,
+    "IsError": false,
+    "Message": null,
+    "TraceId": "iGGb-0E4m-1AuG-dKzp"
+}
+```
 
 Note the `ThingGroups` field that will contain a list of groups. For new accounts, there is only one group.
 
@@ -260,61 +280,65 @@ For this example, we are going to create a simple `computer` thing to record som
 
 The following JSON definition represents our example thing of a hypothetical LAB PC:
 
-    { 
-        "Thing": {
-            "ThingName": "Home Lab PC", 
-            "ThingDescription": "A PC used in the maker lab", 
-            "ThingMetaData": {
-                "ComputerHostname": "ABCDEFG",
-                "Make": "Dell",
-                "RAMInstalled": 17179869184
+```json
+{ 
+    "Thing": {
+        "ThingName": "Home Lab PC", 
+        "ThingDescription": "A PC used in the maker lab", 
+        "ThingMetaData": {
+            "ComputerHostname": "ABCDEFG",
+            "Make": "Dell",
+            "RAMInstalled": 17179869184
+        },
+        "Sensors": [ 
+            {
+                "SensorName": "Cpu Utilization", 
+                "SensorDescription": "System and User CPU Utilization", 
+                "SensorAxis": [ 
+                    {
+                        "AxisName": "System Usage", 
+                        "DataType": "NUMBER", 
+                        "UserDefinedType": "PERCENT"
+                    },
+                    {
+                        "AxisName": "User Usage",
+                        "DataType": "NUMBER",
+                        "UserDefinedType": "PERCENT"
+                    }
+                ]
             },
-            "Sensors": [ 
-                {
-                    "SensorName": "Cpu Utilization", 
-                    "SensorDescription": "System and User CPU Utilization", 
-                    "SensorAxis": [ 
-                        {
-                            "AxisName": "System Usage", 
-                            "DataType": "NUMBER", 
-                            "UserDefinedType": "PERCENT"
-                        },
-                        {
-                            "AxisName": "User Usage",
-                            "DataType": "NUMBER",
-                            "UserDefinedType": "PERCENT"
-                        }
-                    ]
-                },
-                {
-                    "SensorName": "Memory Utilization", 
-                    "SensorDescription": "RAM and Swap space used on the system", 
-                    "SensorAxis": [
-                        {
-                            "AxisName": "Ram Used", 
-                            "DataType": "NUMBER",
-                            "UserDefinedType": "BYTES"
-                        },
-                        {
-                            "AxisName": "Swap Used", 
-                            "DataType": "NUMBER", 
-                            "UserDefinedType": "BYTES"
-                        }
-                    ]
-                }
-            ]
-        }
+            {
+                "SensorName": "Memory Utilization", 
+                "SensorDescription": "RAM and Swap space used on the system", 
+                "SensorAxis": [
+                    {
+                        "AxisName": "Ram Used", 
+                        "DataType": "NUMBER",
+                        "UserDefinedType": "BYTES"
+                    },
+                    {
+                        "AxisName": "Swap Used", 
+                        "DataType": "NUMBER", 
+                        "UserDefinedType": "BYTES"
+                    }
+                ]
+            }
+        ]
     }
+}
+```
 
 ##### [Command Line] Command to Run
 
 The curl(1) command:
 
-    $ curl -X POST "https://data-us1.oculusd.com/v2/thinggroup/root-account-context/raber6mk7/new-thing/tgberbkrib" \
-    -H  "accept: application/json" \
-    -H  "Authorization: Bearer aaa.bbb.ccc" \
-    -H  "Content-Type: application/json" \
-    -d "{...}"
+```bash
+$ curl -X POST "https://data-us1.oculusd.com/v2/thinggroup/root-account-context/raber6mk7/new-thing/tgberbkrib" \
+-H  "accept: application/json" \
+-H  "Authorization: Bearer aaa.bbb.ccc" \
+-H  "Content-Type: application/json" \
+-d "{...}"
+```
 
 **Note**: The command has been trimmed. Replace the `Authorization` and JSON definition with the correct values.
 
@@ -322,15 +346,17 @@ The curl(1) command:
 
 If the new thing was successfully created, you will receive the following:
 
-    {
-        "Data": {
-            "ThingId": "thingberdom381"
-        },
-        "ErrorMessage": null,
-        "IsError": false,
-        "Message": "A new thing group was created successfully.",
-        "TraceId": "83WE-lTB1-gr6b-wvHL"
-    }
+```json
+{
+    "Data": {
+        "ThingId": "thingberdom381"
+    },
+    "ErrorMessage": null,
+    "IsError": false,
+    "Message": "A new thing group was created successfully.",
+    "TraceId": "83WE-lTB1-gr6b-wvHL"
+}
+```
 
 The `Data` field contain a field called `ThingId` which has the new `Thing` ID you will need when logging sensor data from this thing.
 
