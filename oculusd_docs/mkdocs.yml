@@ -3,6 +3,7 @@ site_name: OculusD.com, Inc. API Documentation (API v2)
 nav:
   - Home: index.md
   - Introduction: intro.md
+  - Direct API Integration: swagger.md
 
 theme: readthedocs
 
