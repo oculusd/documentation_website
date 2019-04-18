@@ -461,7 +461,7 @@ For this example, the following JSON data will be used:
             "AxisReadings": [
                 {
                     "AxisName": "Ram Used",
-                    "Data": "3187"
+                    "Data": "3791920"
                 },
                 {
                     "AxisName": "Swap Used",
@@ -482,7 +482,7 @@ $ curl -X POST "https://data-us1.oculusd.com/v2/data/log/thingberdom381" \
 -H  "accept: application/json" \
 -H  "Authorization: Bearer aaa.bbb.ccc" \
 -H  "Content-Type: application/json" \
--d "{\"ReadingTimestamp\":1555568797,\"Sensors\":[{\"SensorName\":\"Cpu Utilization\",\"AxisReadings\":[{\"AxisName\":\"System Usage\",\"Data\":\"1.6\"},{\"AxisName\":\"User Usage\",\"Data\":\"12.9\"}]},{\"SensorName\":\"Memory Utilization\",\"AxisReadings\":[{\"AxisName\":\"Ram Used\",\"Data\":\"3187\"},{\"AxisName\":\"Swap Used\",\"Data\":\"0\"}]}]}"
+-d "{\"ReadingTimestamp\":1555568797,\"Sensors\":[{\"SensorName\":\"Cpu Utilization\",\"AxisReadings\":[{\"AxisName\":\"System Usage\",\"Data\":\"1.6\"},{\"AxisName\":\"User Usage\",\"Data\":\"12.9\"}]},{\"SensorName\":\"Memory Utilization\",\"AxisReadings\":[{\"AxisName\":\"Ram Used\",\"Data\":\"3791920\"},{\"AxisName\":\"Swap Used\",\"Data\":\"0\"}]}]}"
 ```
 
 ##### Expected output
@@ -506,16 +506,100 @@ Once the data is capture, the following JSON message will be returned:
 
 #### Basic query of thing data
 
-Todo...
+At the moment only a basic query interface is provided, which is explained below.
 
 ##### Preparations
 
-Todo...
+To execute a basic query, you need the following information:
+
+* Root account bearer token (requires root account authentication)
+* Root account ID
+* Thing group ID
+* Thing ID
+* (Optional) Limit parameter (limits the number of rows per sensor-axis)
+* (Optional) `notBefore` parameter, which is a unix timestamp
+* (Optional) `notAfter` parameter, which is a unix timestamp
+
+![Step 9](img/quick_start_step_009.png)
+
+[Swagger Link](https://data-us1.oculusd.com/v2/ui/#/default/iotappv2.iotappv2.pf_data_root_account_query_simple)
 
 ##### [Command Line] Command to Run
 
-Todo...
+Use the following curl(1) command to execute a basic query:
+
+```bash
+$ curl -X GET "https://data-us1.oculusd.com/v2/data/query/root-account-context/raber6mk7/tgberbkrib/thingberdom381/simple" \
+-H  "accept: application/json" \
+-H  "Authorization: Bearer aaa.bbb.ccc"
+```
 
 ##### Expected output
 
-Todo...
+The following example output is from data collected from the example `Thing` over a couple of minutes:
+
+```json
+{
+  "Data": {
+    "CsvData": [
+      "\"Cpu Utilization\",\"System Usage\",\"1555568797\",\"1555569281\",\"1.6\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555568797\",\"1555569281\",\"12.9\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555568797\",\"1555569281\",\"3187\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555568797\",\"1555569281\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555576865\",\"1555576929\",\"2.2\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555576865\",\"1555576929\",\"14.2\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555576865\",\"1555576929\",\"3941272\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555576865\",\"1555576929\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555577385\",\"1555577385\",\"1.3\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555577385\",\"1555577385\",\"8.9\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555577385\",\"1555577385\",\"3881236\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555577385\",\"1555577385\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555577417\",\"1555577418\",\"0.9\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555577417\",\"1555577418\",\"7.8\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555577417\",\"1555577418\",\"3909008\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555577417\",\"1555577418\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555577827\",\"1555577827\",\"3.5\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555577827\",\"1555577827\",\"17.1\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555577827\",\"1555577827\",\"3883636\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555577827\",\"1555577827\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555577887\",\"1555577888\",\"1.6\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555577887\",\"1555577888\",\"10.5\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555577887\",\"1555577888\",\"3985688\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555577887\",\"1555577888\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555577947\",\"1555577947\",\"1.4\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555577947\",\"1555577947\",\"10.6\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555577947\",\"1555577947\",\"3927100\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555577947\",\"1555577947\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555578007\",\"1555578008\",\"2.0\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555578007\",\"1555578008\",\"11.9\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555578007\",\"1555578008\",\"3932172\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555578007\",\"1555578008\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555578067\",\"1555578068\",\"1.2\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555578067\",\"1555578068\",\"11.7\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555578067\",\"1555578068\",\"4065728\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555578067\",\"1555578068\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555578128\",\"1555578128\",\"3.6\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555578128\",\"1555578128\",\"17.7\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555578128\",\"1555578128\",\"4043776\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555578128\",\"1555578128\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555578187\",\"1555578188\",\"4.5\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555578187\",\"1555578188\",\"14.5\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555578187\",\"1555578188\",\"3969872\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555578187\",\"1555578188\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555578247\",\"1555578248\",\"1.3\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555578247\",\"1555578248\",\"9.5\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555578247\",\"1555578248\",\"4008100\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555578247\",\"1555578248\",\"0\"",
+      "\"Cpu Utilization\",\"System Usage\",\"1555578307\",\"1555578308\",\"1.4\"",
+      "\"Cpu Utilization\",\"User Usage\",\"1555578307\",\"1555578308\",\"10.3\"",
+      "\"Memory Utilization\",\"Ram Used\",\"1555578307\",\"1555578308\",\"4022364\"",
+      "\"Memory Utilization\",\"Swap Used\",\"1555578307\",\"1555578308\",\"0\""
+    ],
+    "CsvHeaderLine": "sensor-name,axis-name,reading-timestamp,service-timestamp,data"
+  },
+  "ErrorMessage": null,
+  "IsError": false,
+  "Message": null,
+  "TraceId": "Di0x-hBmj-MeuT-g3uU"
+}
+```
