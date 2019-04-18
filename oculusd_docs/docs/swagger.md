@@ -7,6 +7,10 @@ You have the following options to explore the Swagger UI:
 1. The Swagger UI as deployed with our service [available here](https://data-us1.oculusd.com/v2/ui/)
 2. The YAML definition is also [available on GitHub](https://github.com/oculusd/openapi-definitions)
 
+This section walks through a complete example from setting up an account, to defining a `Thing` and finally to logging and querying sensor data.
+
+It is up to you to either use the Swagger UI or the [curl(1)](https://curl.haxx.se/) command to execute the commands.
+
 ## Basic Flow
 
 ### New Accounts (aka Root Account)
