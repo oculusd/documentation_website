@@ -362,20 +362,160 @@ The `Data` field contain a field called `ThingId` which has the new `Thing` ID y
 
 ### Thing Data
 
-#### Log thing data
+#### Creating a Thing Session Token
+
+In order for things to log data, a thing token is required. This section explain the steps to create a thing token.
+
+Typically thing tokens do not have to expire and the default token time-to-live (TTL) is set to the maximum integer value of a 64-bit positive integer.
+
+When a token TTL needs to be set, supply the number of seconds the session should be valid for from the current timestamp.
 
 ##### Preparations
 
+The following information is required for the request:
+
+* Root account bearer token
+* Root account ID
+* Thing group ID
+* Thing ID
+* (Optional) Token TTL
+
+![Step 7](img/quick_start_step_007.png)
+
+[Swagger Link](https://data-us1.oculusd.com/v2/ui/#/default/iotappv2.iotappv2.pf_thing_root_account_create_thing_session)
+
 ##### [Command Line] Command to Run
 
+The following curl(1) command can be run:
+
+```bash
+$ curl -X GET "https://data-us1.oculusd.com/v2/thing/root-account-context/raber6mk7/create-thing-session/tgberbkrib/thingberdom381" \
+-H  "accept: application/json" \
+-H  "Authorization: Bearer aaa.bbb.ccc"
+```
+
 ##### Expected output
+
+The following JSON data will be returned if the command completed successfully.
+
+```json
+{
+  "Data": {
+    "ThingToken": "xxxxxx.yyyyyy.zzzzzz",
+    "ThingTokenExpiry": 9223372036854776000
+  },
+  "ErrorMessage": null,
+  "IsError": false,
+  "Message": null,
+  "TraceId": "wQeG-KojF-8aJ6-aAC9"
+}
+```
+
+**Note**: The `Data` field contains the following two fields:
+
+* `ThingToken` - The bearer token the `Thing` will require to authorize the submitted sensor data.
+* `ThingTokenExpiry` - The Unix timestamp at which the token will expire
+
+#### Log thing data
+
+AT some point a `Thing` will start to collect sensor data. This data can be submitted to the OculusD API service.
+
+**Important**: The current service allow for a periodic submission of sensor data, determined by the account limits (rate, volume etc.). The exact numbers is subject to change in the ALPHA and BETA testing phases before being finalized for the final commercial packages. There is not yet a streaming (MQTT-type) service.
+
+##### Preparations
+
+In order to collect sensor data, the `Thing` must prepare the following information:
+
+* A valid `Thing` token
+* The `Thing` ID
+* The actual sensor data
+* (Optional) If you need to record the exact local system timestamp with the data, you must also record the timestamp when collecting sensor data.
+
+**Note**: WHen a timestamp is supplied, that timestamp represents the timestamp for ALL sensor readings. There is not yet a facility to record fine-grained per-sensor timestamp values.
+
+![Step 8](img/quick_start_step_008.png)
+
+[Swagger Link](https://data-us1.oculusd.com/v2/ui/#/default/iotappv2.iotappv2.pf_thing_root_account_create_thing_session)
+
+For this example, the following JSON data will be used:
+
+```JSON
+{
+    "ReadingTimestamp": 1555568797,
+    "Sensors": [
+        {
+            "SensorName": "Cpu Utilization",
+            "AxisReadings": [
+                {
+                    "AxisName": "System Usage",
+                    "Data": "1.6"
+                },
+                {
+                    "AxisName": "User Usage",
+                    "Data": "12.9"
+                }
+            ]
+        },
+        {
+            "SensorName": "Memory Utilization",
+            "AxisReadings": [
+                {
+                    "AxisName": "Ram Used",
+                    "Data": "3187"
+                },
+                {
+                    "AxisName": "Swap Used",
+                    "Data": "0"
+                }
+            ]
+        }
+    ]
+}
+```
+
+##### [Command Line] Command to Run
+
+The following curl(1) command is an example of how the sample data can be submitted:
+
+```bash
+$ curl -X POST "https://data-us1.oculusd.com/v2/data/log/thingberdom381" \
+-H  "accept: application/json" \
+-H  "Authorization: Bearer aaa.bbb.ccc" \
+-H  "Content-Type: application/json" \
+-d "{\"ReadingTimestamp\":1555568797,\"Sensors\":[{\"SensorName\":\"Cpu Utilization\",\"AxisReadings\":[{\"AxisName\":\"System Usage\",\"Data\":\"1.6\"},{\"AxisName\":\"User Usage\",\"Data\":\"12.9\"}]},{\"SensorName\":\"Memory Utilization\",\"AxisReadings\":[{\"AxisName\":\"Ram Used\",\"Data\":\"3187\"},{\"AxisName\":\"Swap Used\",\"Data\":\"0\"}]}]}"
+```
+
+##### Expected output
+
+Once the data is capture, the following JSON message will be returned:
+
+```json
+{
+  "Data": {
+    "AxisIgnored": 0,
+    "SensorsIgnored": 0,
+    "SensorsProcessed": 0,
+    "TotalRecordQty": 0
+  },
+  "ErrorMessage": null,
+  "IsError": false,
+  "Message": null,
+  "TraceId": "nrwU-Qt3I-SdB3-VzQt"
+}
+```
 
 #### Basic query of thing data
 
+Todo...
+
 ##### Preparations
+
+Todo...
 
 ##### [Command Line] Command to Run
 
+Todo...
+
 ##### Expected output
 
-
+Todo...
