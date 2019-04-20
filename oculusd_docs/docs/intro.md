@@ -19,16 +19,27 @@ Under most circumstances, you will manage your account(s) and things from a Work
 On the workstation, you will typically install several tools:
 
 * odc_pycommons - The common Python libraries used by all Python based applications integrating to OculusD
+  * [`odc_pycommons` documentation](https://github.com/oculusd/odc_pycommons/wiki) is maintained on the project wiki. This library is more aimed at usage in other libraries, but Python power users are welcome to use it in their own projects which may offer more finer grained control over processes.
 * odc_pyadminlibs - The Python libraries required to perform administrative tasks
 
 From the Workstation, you will also export specific configurations to be installed and/or used on your "things".
 
 On your "thing" (a Raspberry Pi in this example, with a TMP006 Temperature Sensor), additional libraries and applications will be required to collect and send data to the OculusD Service.
 
-On the thing, you will typically install the following tools (based on the example in the image):
+On the `Thing`, you will typically install the following tools (based on the example in the image):
 
 * odc_pycommons - The common Python libraries used by all Python based applications integrating to OculusD
 * odapp_pysysmon - Python based system monitoring (CPU, Memory, Storage and various on board sensors
 * odapp_pysensors - Python based application that uses the configuration generated from the Workstation, with potentially additional libraries, to collect data from sensors and send the data to OculusD
 
-**NOTE**: The above utilities and libraries still need to be updated to the latest deployed API version. For now we strongly suggest experienced users refer to the [Swagger UI](https://data-us1.oculusd.com/v2/ui/) which we have also [documented here](swagger.md) for integration into your projects.
+**NOTE**: Some of the above utilities and libraries still need to be updated to the latest deployed API version. For now we strongly suggest experienced users refer to the [Swagger UI](https://data-us1.oculusd.com/v2/ui/) which we have also [documented here](swagger.md) for integration into your projects.
+
+Compatibility Matrix:
+
+| Library         | API Version 1 | API Version 2 |
+|-----------------|:-------------:|:-------------:|
+| odc_pycommons   | no            | yes           |
+| odc_pyadminlibs | yes           | no            |
+| odapp_pysysmon  | yes           | no            |
+| odapp_pysensors | yes           | no            |
+
