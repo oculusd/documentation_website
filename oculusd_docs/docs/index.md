@@ -12,7 +12,7 @@ It is highly recommended to start at the [introduction](intro.md) and follow an 
 
 The documentation is kept up to date on [GitHub](https://github.com/oculusd/documentation_website) and is is highly recommended that you subscribe to notification for updates from there in order to keep up to date with all new developments and/or additions to the documentation.
 
-As of April 2019 we are in the process of updating all documentation and libraries to version 2 of the API.
+As of April 2019 we are in the process of updating all documentation and libraries to version 2 of the API. The [introduction](intro.md) will maintain a compatibility matrix of the current library and application API versio compatibility status.
 
 **Note**: The software libraries themselves are in an update and testing cycle, and therefore the initial updates to this documentation will focus on the API calls before starting to add content for the libraries.
 
